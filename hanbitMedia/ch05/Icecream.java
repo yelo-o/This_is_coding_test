@@ -1,24 +1,21 @@
 package hanbitMedia.ch05;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main10 {
+public class Icecream {
     private static int n, m;
-    private static int[][] graph = new int[1000][1000];
+    private static int[][] graph = new int[1000][1000]; //graph를 적당히 큰 크기로 설정
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
         m = sc.nextInt();
         sc.nextLine(); // 아래부터 문자열로 받을 것이기 때문에 버퍼 지우기
 
-        // 2차원 리스트의 맵 정보 입력 받기
+        // 2차원 배열의 맵 정보 입력 받기
         for (int i = 0; i < n; i++) {
             String str = sc.nextLine();
             for (int j = 0; j < m; j++) {
+                //한 줄에 받은 문자열(String) -> char(한 글자씩) -> int 변환
                 graph[i][j] = str.charAt(j) - '0';
             }
         }
@@ -33,8 +30,7 @@ public class Main10 {
                 }
             }
         }
-        System.out.println(result);
-
+        System.out.printf("아이스크림이 %d개 생성 됩니다.", result);
     }
 
     private static boolean dfs(int x, int y) {
@@ -47,10 +43,10 @@ public class Main10 {
             // 해당 노드 방문 처리
             graph[x][y] = 1;
             // 상, 하, 좌, 우의 위치들도 모두 재귀적으로 호출
-            dfs(x - 1, y);
-            dfs(x, y - 1);
-            dfs(x + 1, y);
-            dfs(x, y + 1);
+            dfs(x + 1, y); // 상
+            dfs(x - 1, y); // 하
+            dfs(x, y - 1); // 좌
+            dfs(x, y + 1); // 우
             return true;
         }
         return false;
