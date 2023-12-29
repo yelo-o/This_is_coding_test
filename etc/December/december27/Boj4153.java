@@ -33,9 +33,9 @@ public class Boj4153 {
                 list.clear();
             }
         }
-        br.close();
         for (String s : answerList) {
             System.out.println(s);
         }
+        br.close();
     }
 }
