@@ -19,12 +19,13 @@ public class Boj4153 {
             if (a == 0 && b == 0 && c == 0) {
                 break;
             } else {
-                while(st.hasMoreTokens()){
-                    list.add(a);
-                    list.add(b);
-                    list.add(c);
-                }
+                list.add(a);
+                list.add(b);
+                list.add(c);
                 Collections.sort(list);
+                a = list.get(0);
+                b = list.get(1);
+                c = list.get(2);
                 if (a * a + b * b == c * c) {
                     answerList.add("right");
                 } else {
