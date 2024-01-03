@@ -9,19 +9,14 @@ public class Boj2869 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        long A = Long.parseLong(st.nextToken());
-        long B = Long.parseLong(st.nextToken());
-        long V = Long.parseLong(st.nextToken());
-        long count = 1;
-        long height = 0; // 높이
-        while (true) {
-            height += A;
-            if (height >= V) {
-                System.out.println(count);
-                break;
-            }
-            height -= B;
-            count++;
+        long up = Long.parseLong(st.nextToken());
+        long down = Long.parseLong(st.nextToken());
+        long goal = Long.parseLong(st.nextToken());
+
+        long day = (goal - down) / (up - down);
+        if ((goal - down) % (up - down) != 0) { // 잔여 나무 막대가 있을 경우, 한번 더 올라 가야 한다.(하루 더 소요)
+            day++;
         }
+        System.out.println(day);
     }
 }
